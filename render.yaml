@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: aegisdeal
+    runtime: docker
+    plan: standard # 2GB RAM minimum for BGE-large + local 3B quantized LLM
+    healthCheckPath: /ui/
+    envVars:
+      - key: APEX_HOST
+        value: 0.0.0.0
+      - key: GRADIO_SERVER_NAME
+        value: 0.0.0.0
+      - key: APEX_LLM_URL
+        value: http://127.0.0.1:11434
