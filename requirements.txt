@@ -1,0 +1,26 @@
+spacy>=3.7
+reportlab>=4.0
+PyPDF2>=3.0
+unstructured[pdf]>=0.14
+sentence-transformers>=2.7
+transformers>=4.40
+torch>=2.2
+chromadb>=0.5
+neo4j>=5.20
+numpy
+scipy
+scikit-learn
+langgraph>=1.0
+gradio>=5,<6
+pandas 
+
+# CPU-only, lightweight. Append your backend's own deps (chromadb, pypdf, reportlab, etc.)
+# or let the Dockerfile pick them up from backend/requirements.txt if it exists.
+gradio>=4.44,<6
+fastapi>=0.110
+uvicorn[standard]>=0.29
+httpx>=0.27
+pydantic>=2.6
+python-multipart>=0.0.9
+pandas>=2.0
+numpy>=1.26

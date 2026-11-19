@@ -1,0 +1,32 @@
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+
+# Heavy Model Weights (>100MB GitHub limit - keep model configs/tokenizers)
+models/**/*.safetensors
+models/**/*.bin
+models/**/*.pt
+models/**/*.pth
+models/**/*.onnx
+models/**/*.gguf
+models/**/*.h5
+*.safetensors
+*.gguf
+
+# Runtime Vector DB, SQLite State & Uploaded Data Room Artifacts
+apex_data/
+*.sqlite3
+*.db
+
+# OS & Editor Artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
