@@ -6,6 +6,7 @@ ENV PYTHONUNBUFFERED=1 \
     APEX_HOST=0.0.0.0 \
     APEX_EMBED_MODEL=/app/models/bge-large-en-v1.5 \
     APEX_LLM_URL=http://127.0.0.1:11434 \
+    APEX_LLM_MODEL=qwen2.5:3b-instruct \
     GRADIO_SERVER_NAME=0.0.0.0 \
     GRADIO_ANALYTICS_ENABLED=False \
     ANONYMIZED_TELEMETRY=False
@@ -35,7 +36,7 @@ COPY . /app
 RUN python -c "from huggingface_hub import snapshot_download; snapshot_download('BAAI/bge-large-en-v1.5', local_dir='/app/models/bge-large-en-v1.5')"
 
 # Pre-pull quantized Ollama model into image layer (change model tag if your config uses another)
-RUN ollama serve & sleep 5 && ollama pull qwen2.5:3b && pkill ollama
+RUN ollama serve & sleep 5 && ollama pull qwen2.5:3b-instruct && pkill ollama
 
 # Enforce strict offline mode at runtime after build downloads complete
 ENV HF_HUB_OFFLINE=1 \
