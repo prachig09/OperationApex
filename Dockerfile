@@ -36,7 +36,11 @@ COPY . /app
 RUN python -c "from huggingface_hub import snapshot_download; snapshot_download('BAAI/bge-large-en-v1.5', local_dir='/app/models/bge-large-en-v1.5')"
 
 # Pre-pull quantized Ollama model into image layer (change model tag if your config uses another)
-RUN ollama serve & sleep 5 && ollama pull qwen2.5:3b-instruct && pkill ollama
+RUN bash -c 'ollama serve >/tmp/ollama.log 2>&1 & \
+  PID=$!; \
+  for i in $(seq 1 30); do ollama list >/dev/null 2>&1 && break; sleep 1; done; \
+  OLLAMA_NOPROGRESS=1 ollama pull qwen2.5:3b-instruct; \
+  kill $PID; wait $PID || true'
 
 # Enforce strict offline mode at runtime after build downloads complete
 ENV HF_HUB_OFFLINE=1 \
