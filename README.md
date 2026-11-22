@@ -1,3 +1,5 @@
+![AegisDeal 4-Tab Air-Gapped Due Diligence UI](assets/snapshots/dashboard_ui.png)
+
 # AegisDeal (Operation Apex)
 
 **Air-gapped, local-first M&A due diligence and contract risk auditing.**
